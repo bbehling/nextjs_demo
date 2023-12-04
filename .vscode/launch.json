@@ -4,6 +4,7 @@
     {
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
+      "runtimeVersion": "18",
       "request": "launch",
       "command": "npm run dev"
     },
