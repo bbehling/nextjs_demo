@@ -2,7 +2,8 @@
   "routes": [
     {
       "route": "/",
-      "rewrite": "/channels"
+      "redirect": "/channels",
+      "statusCode": 301
     }
   ]
 }
