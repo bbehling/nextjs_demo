@@ -1,0 +1,21 @@
+.fontColor {
+  color: #fff;
+}
+
+.button {
+  border-color: white !important;
+  background-color: #008ff7 !important;
+  border-color: #008ff7 !important;
+}
+
+.input {
+  border-color: white !important;
+}
+
+.input:focus {
+  border-left-color: #008ff7 !important;
+}
+
+.iconStyle {
+  color: #ffffff;
+}
