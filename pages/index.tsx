@@ -76,17 +76,17 @@ export default function Home({}) {
     </div>
   );
 }
-/* export async function getServerSideProps() {
+export async function getServerSideProps() {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
 
     //const channels = await db.collection("channels").find({}).toArray();
-
+    const channels = [];
     return {
-      //props: { channels: JSON.parse(JSON.stringify(channels)) },
+      props: { channels: JSON.parse(JSON.stringify(channels)) },
     };
   } catch (e) {
     console.error(e);
   }
-} */
+}
