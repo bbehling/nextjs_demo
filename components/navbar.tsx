@@ -1,11 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./navbar.module.css";
 import { usePathname } from "next/navigation";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light p-4">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light p-4 sticky-top">
       <div className="container-fluid">
         <a className="navbar-brand col-2" href="#">
           Creator Discounts
@@ -23,19 +25,29 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item ms-3">
+            <li className="nav-item">
+              <button className="nav-link d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+                Filter
+              </button>
+            </li>
+            <li className="nav-item">
               <a href="/" className={pathname == "/" ? "nav-link active" : "nav-link"}>
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className={pathname == "/About" ? "nav-link active" : "nav-link"} href="/about">
+              <a className={pathname == "/about" ? "nav-link active" : "nav-link"} href="/about">
                 About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className={pathname == "/contact" ? "nav-link active" : "nav-link"} href="/contact">
+                Contact Us
               </a>
             </li>
           </ul>
           <form className="d-flex">
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary d-lg-block d-none" type="submit">
               <span className={styles.fontColor}>Contact Us</span>
             </button>
           </form>

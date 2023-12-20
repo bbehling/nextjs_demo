@@ -101,15 +101,7 @@ export default function SideMenu() {
           </ul>
         </div>
       </div>
-      <div className="py-2 ms-4">
-        <button
-          className="btn float-start d-sm-none"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvas"
-          role="button"
-        >
-          <FontAwesomeIcon icon={faArrowRight} size="xl" />
-        </button>
+      <div className="py-2 ms-4" style={{ position: "fixed" }}>
         <button
           className="btn float-start d-none d-lg-block"
           data-bs-toggle="offcanvas"

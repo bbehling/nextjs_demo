@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 
@@ -16,6 +17,7 @@ export default function Channels({ channels }) {
                       {video.DescriptionRaw.length > 0 && (
                         <div className="mb-1">
                           <h4 className="card-title">{`Video Title: ${video.VideoTitle}`}</h4>
+                          <h5 className="card-title">{`Published Date:  ${dayjs(video.date).format("MM/DD/YYYY")}`}</h5>
                           <div className="accordion" id="accordionExample">
                             <div className="accordion-item">
                               <h2 className="accordion-header">
