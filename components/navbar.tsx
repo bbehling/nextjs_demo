@@ -1,6 +1,9 @@
 import styles from "./navbar.module.css";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light p-4">
       <div className="container-fluid">
@@ -21,12 +24,12 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
             <li className="nav-item ms-3">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a href="/" className={pathname == "/" ? "nav-link active" : "nav-link"}>
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className={pathname == "/About" ? "nav-link active" : "nav-link"} href="/about">
                 About
               </a>
             </li>

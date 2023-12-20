@@ -1,20 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faArrowRight, faMagnifyingGlass, faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./sideMenu.module.css";
+import { usePathname } from "next/navigation";
 
 export default function SideMenu() {
+  const pathname = usePathname();
+
   return (
     <>
       <div className="offcanvas offcanvas-start bg-dark font-styles" id="offcanvas">
         <div className="offcanvas-header">
-          {/*  <button
-          className="btn float-start d-none d-lg-block"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvas"
-          role="button"
-        > 
-          <FontAwesomeIcon icon={faBars} size="xl" />
-        </button>*/}
           <button
             type="button"
             className="btn shadow-none ms-auto d-none d-lg-block"
@@ -58,48 +53,48 @@ export default function SideMenu() {
           <ul className="nav nav-pills nav-pills flex-column mb-auto ms-2 me-2" id="menu">
             <li className="nav-item"></li>
             <li className="nav-item">
-              <a href="#" className="nav-link text-truncate">
+              <a href="/political" className={pathname == "/political" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Political</span>
               </a>
             </li>
             <li>
-              <a href="#" data-bs-toggle="collapse" className="nav-link text-truncate">
+              <a href="/business" className={pathname == "/business" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Business</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/electronics" className={pathname == "/electronics" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Electronics</span>
               </a>
             </li>
 
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/apparel" className={pathname == "/apparel" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Apparel</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/gaming" className={pathname == "/gaming" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Gaming & Entertainment</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/health" className={pathname == "/health" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Health & Wellness</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/comedy" className={pathname == "/comedy" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Comedy</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="/jewelry" className={pathname == "/jewelry" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Jewelry & Accessories</span>
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link text-truncate">
+              <a href="#/kitchen" className={pathname == "/kitchen" ? "nav-link active" : "nav-link"}>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Kitchen & Dining</span>
               </a>
             </li>
