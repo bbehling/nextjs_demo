@@ -8,9 +8,9 @@ export default function Home({ channels }) {
       <div className="row py-2">
         <div className="col-12">
           <div className="card mb-3 bg-light">
-            <div className="card-body text-center">
+            <div className="card-body text-center align-items-center justify-content-center">
               <p>Welcome to Creator Discounts, where you can find discounted merchandise from YouTube Creators.</p>
-              <p>Click the button to the left to filter by video creator category.</p>
+              <p className="d-none d-lg-block">Click the button to the left to filter by video creator category.</p>
             </div>
           </div>
         </div>
