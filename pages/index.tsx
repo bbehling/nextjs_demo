@@ -16,29 +16,25 @@ export default function Home({ channels }) {
         </div>
       </div>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 text-center">
           <h3>Latest Discounts</h3>
           <div>
-            <div className="card mb-3">
-              <div className="card-body">
-                {channels.map((channel) => (
+            {channels.map((channel) => (
+              <div>
+                {channel.videos.map((video, i) => (
                   <div>
-                    {channel.videos.map((video, i) => (
-                      <div>
-                        {video.DescriptionRaw.length > 0 && (
-                          <div className="mb-1">
-                            <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
-                            <p className={styles.p}>
-                              <AutoLink text={video.ProcessedText} />{" "}
-                            </p>
-                          </div>
-                        )}
+                    {video.DescriptionRaw.length > 0 && (
+                      <div className="mb-1">
+                        <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                        <p className={styles.p}>
+                          <AutoLink text={video.ProcessedText} />{" "}
+                        </p>
                       </div>
-                    ))}
+                    )}
                   </div>
                 ))}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
