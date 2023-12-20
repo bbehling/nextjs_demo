@@ -9,7 +9,7 @@ export default function Home({}) {
         <div className="col-2"></div>
         <div className="col-10">
           <h1>You Tube Channels</h1>
-          {/* <div>
+          <div>
             {channels.map((channel) => (
               <div className="card mb-3">
                 <div className="card-body">
@@ -70,7 +70,7 @@ export default function Home({}) {
                 </div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
@@ -81,8 +81,7 @@ export async function getServerSideProps() {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
 
-    //const channels = await db.collection("channels").find({}).toArray();
-    const channels = [];
+    const channels = await db.collection("channels").find({}).toArray();
     return {
       props: { channels: JSON.parse(JSON.stringify(channels)) },
     };
