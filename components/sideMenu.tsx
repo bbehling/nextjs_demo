@@ -101,7 +101,7 @@ export default function SideMenu() {
           </ul>
         </div>
       </div>
-      <div className="py-2 ms-4" style={{ position: "fixed" }}>
+      <div className="py-2" style={{ position: "fixed" }}>
         <button
           className="btn float-start d-none d-lg-block"
           data-bs-toggle="offcanvas"
