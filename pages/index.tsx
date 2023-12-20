@@ -82,9 +82,19 @@ export async function getServerSideProps() {
     const db = client.db("creator-discounts");
 
     const channels = await db.collection("channels").find({}).toArray();
-    return {
-      props: { channels: JSON.parse(JSON.stringify(channels)) },
-    };
+
+    // if running dev, always regenerate pages.
+    // if production, regenerate page only once every 20 hours.
+    if (process.env.NODE_ENV === "development") {
+      return {
+        props: { channels: JSON.parse(JSON.stringify(channels)) },
+      };
+    } else {
+      return {
+        props: { channels: JSON.parse(JSON.stringify(channels)) },
+        revalidate: 72000,
+      };
+    }
   } catch (e) {
     console.error(e);
   }
