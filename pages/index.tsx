@@ -2,7 +2,7 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import SideMenu from "../components/sideMenu";
 
-export default function Home({}) {
+export default function Home({ channels }) {
   return (
     <div className="container">
       <div className="row">
