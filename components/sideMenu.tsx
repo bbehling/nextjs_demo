@@ -1,19 +1,38 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faArrowRight, faMagnifyingGlass, faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./sideMenu.module.css";
 
 export default function SideMenu() {
   return (
-    <div className="sticky-top">
+    <>
       <div className="offcanvas offcanvas-start bg-dark font-styles" id="offcanvas">
         <div className="offcanvas-header">
-          <div className="offcanvas-title d-none d-sm-block" id="offcanvas"></div>
+          {/*  <button
+          className="btn float-start d-none d-lg-block"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvas"
+          role="button"
+        > 
+          <FontAwesomeIcon icon={faBars} size="xl" />
+        </button>*/}
           <button
             type="button"
-            className="btn-close text-reset shadow-none"
+            className="btn shadow-none ms-auto d-none d-lg-block"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-          ></button>
+            role="button"
+          >
+            <FontAwesomeIcon icon={faXmark} size="xl" />
+          </button>
+          <button
+            type="button"
+            className="btn shadow-none ms-auto d-sm-none"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            role="button"
+          >
+            <FontAwesomeIcon icon={faArrowLeft} size="xl" />
+          </button>
         </div>
         <div className="offcanvas-body px-0">
           <div className="row">
@@ -21,7 +40,7 @@ export default function SideMenu() {
               <div className="input-group bg-white">
                 <span className="input-group-append">
                   <button
-                    className={`btn shadow-none bg-white rounded-0 border-start-0 border ms-n5 ${styles.button} `}
+                    className={`btn shadow-none btn-primary bg-white rounded-0 border-start-0 border ms-n5 ${styles.button} `}
                     type="button"
                   >
                     <FontAwesomeIcon className={styles.iconStyle} icon={faMagnifyingGlass} />
@@ -36,7 +55,7 @@ export default function SideMenu() {
             </div>
           </div>
           <h5 className={`px-3 mt-5 mb-3 ${styles.fontColor}`}>Sorted by Category</h5>
-          <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+          <ul className="nav nav-pills nav-pills flex-column mb-auto ms-2 me-2" id="menu">
             <li className="nav-item"></li>
             <li className="nav-item">
               <a href="#" className="nav-link text-truncate">
@@ -44,8 +63,7 @@ export default function SideMenu() {
               </a>
             </li>
             <li>
-              <a href="#submenu1" data-bs-toggle="collapse" className="nav-link text-truncate">
-                <i className="fs-5 bi-speedometer2"></i>
+              <a href="#" data-bs-toggle="collapse" className="nav-link text-truncate">
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Business</span>
               </a>
             </li>
@@ -57,48 +75,55 @@ export default function SideMenu() {
 
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-grid"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Apparel</span>
               </a>
             </li>
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-people"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Gaming & Entertainment</span>
               </a>
             </li>
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-people"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Health & Wellness</span>
               </a>
             </li>
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-people"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Comedy</span>
               </a>
             </li>
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-people"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Jewelry & Accessories</span>
               </a>
             </li>
             <li>
               <a href="#" className="nav-link text-truncate">
-                <i className="fs-5 bi-people"></i>
                 <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Kitchen & Dining</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <div className="py-2">
-        <button className="btn float-start" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+      <div className="py-2 ms-4">
+        <button
+          className="btn float-start d-sm-none"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvas"
+          role="button"
+        >
+          <FontAwesomeIcon icon={faArrowRight} size="xl" />
+        </button>
+        <button
+          className="btn float-start d-none d-lg-block"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvas"
+          role="button"
+        >
           <FontAwesomeIcon icon={faBars} size="xl" />
         </button>
       </div>
-    </div>
+    </>
   );
 }

@@ -5,8 +5,12 @@ $theme-colors: (
   "info": #ff7d50,
   "warning": #ffbe0b,
   "danger": #ff007f,
-  "light": #c0ccda,
+  "light": #fff,
   "dark": #224769,
 );
+
+$navbar-light-active-color: #008ff7;
+$navbar-light-brand-color: rgba(0, 0, 0, 0.9);
+$navbar-light-brand-hover-color: $navbar-light-brand-color;
 
 @import "/node_modules/bootstrap/scss/bootstrap.scss";
