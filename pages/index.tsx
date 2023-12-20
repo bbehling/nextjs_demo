@@ -91,8 +91,7 @@ export async function getServerSideProps() {
       };
     } else {
       return {
-        props: { channels: JSON.parse(JSON.stringify(channels)) },
-        revalidate: 72000,
+        props: { channels: JSON.parse(JSON.stringify(channels)), revalidate: 72000 },
       };
     }
   } catch (e) {

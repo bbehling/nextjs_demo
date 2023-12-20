@@ -1,3 +1,5 @@
+$gray-100: #f8f9fa;
+
 $theme-colors: (
   "primary": #008ff7,
   "secondary": #404040,
@@ -5,7 +7,7 @@ $theme-colors: (
   "info": #ff7d50,
   "warning": #ffbe0b,
   "danger": #ff007f,
-  "light": #fff,
+  "light": $gray-100,
   "dark": #224769,
 );
 
