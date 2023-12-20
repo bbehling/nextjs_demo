@@ -2,14 +2,14 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import SideMenu from "../components/sideMenu";
 
-export default function Home({ channels }) {
+export default function Home({}) {
   return (
     <div className="container">
       <div className="row">
         <div className="col-2"></div>
         <div className="col-10">
           <h1>You Tube Channels</h1>
-          <div>
+          {/* <div>
             {channels.map((channel) => (
               <div className="card mb-3">
                 <div className="card-body">
@@ -70,23 +70,23 @@ export default function Home({ channels }) {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
   );
 }
-export async function getServerSideProps() {
+/* export async function getServerSideProps() {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
 
-    const channels = await db.collection("channels").find({}).toArray();
+    //const channels = await db.collection("channels").find({}).toArray();
 
     return {
-      props: { channels: JSON.parse(JSON.stringify(channels)) },
+      //props: { channels: JSON.parse(JSON.stringify(channels)) },
     };
   } catch (e) {
     console.error(e);
   }
-}
+} */
