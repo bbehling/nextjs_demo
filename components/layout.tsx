@@ -4,7 +4,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar />
-      <SideMenu />
+      <div className="d-sm-none">
+        <SideMenu />
+      </div>
       <main>{children}</main>
     </>
   );

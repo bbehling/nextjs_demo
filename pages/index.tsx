@@ -1,40 +1,42 @@
 import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
+import Filters from "../components/filters";
 
 export default function Home({ channels }) {
   return (
-    <div className="container">
-      <div className="row py-2">
-        <div className="col-12">
-          <div className="card mb-3 bg-light">
-            <div className="card-body text-center align-items-center justify-content-center">
-              <p>Welcome to Creator Discounts, where you can find discounted merchandise from YouTube Creators.</p>
-              <p className="d-none d-lg-block">Click the button to the left to filter by video creator category.</p>
-            </div>
-          </div>
+    <div className="container-fluid">
+      <div className="row flex-nowrap">
+        <div className="mx-auto col-3 p-4 bg-dark d-none d-lg-block bg-dark">
+          <Filters />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12 text-center">
-          <h3>Latest Discounts</h3>
-          <div>
-            {channels.map((channel) => (
-              <div>
-                {channel.videos.map((video, i) => (
-                  <div>
-                    {video.DescriptionRaw.length > 0 && (
-                      <div className="mb-1">
-                        <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
-                        <p className={styles.p}>
-                          <AutoLink text={video.ProcessedText} />{" "}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+        <div className="row ms-1">
+          <div className="col-9">
+            <div className="card mb-3 bg-light">
+              <div className="card-body text-center align-items-center justify-content-center">
+                <p>Welcome to Creator Discounts, where you can find discounted merchandise from YouTube Creators.</p>
+                <p className="d-none d-lg-block">Click the button to the left to filter by video creator category.</p>
               </div>
-            ))}
+            </div>
+            <h3>Latest Discounts</h3>
+            <div>
+              {channels.map((channel) => (
+                <div>
+                  {channel.videos.map((video, i) => (
+                    <div>
+                      {video.DescriptionRaw.length > 0 && (
+                        <div className="mb-1">
+                          <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                          <p className={styles.p}>
+                            <AutoLink text={video.ProcessedText} />{" "}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

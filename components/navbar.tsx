@@ -50,11 +50,6 @@ export default function Navbar() {
               </a>
             </li>
           </ul>
-          <form className="d-flex">
-            <button className="btn btn-primary d-lg-block d-none" type="submit">
-              <span className={styles.fontColor}>Contact Us</span>
-            </button>
-          </form>
         </div>
       </div>
     </nav>
