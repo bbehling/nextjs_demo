@@ -22,7 +22,7 @@ export default function Filtered({ channels }) {
   }
   return (
     <div className="container-fluid">
-      <div className="row flex-nowrap">
+      <div className={`row flex-nowrap ${styles.nowrap}`}>
         <div className="mx-auto col-3 p-4 bg-dark d-none d-lg-block bg-dark">
           <Filters />
         </div>

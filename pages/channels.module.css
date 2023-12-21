@@ -2,3 +2,7 @@
   white-space-collapse: preserve;
   white-space: pre-wrap;
 }
+
+.nowrap {
+  overflow: hidden;
+}

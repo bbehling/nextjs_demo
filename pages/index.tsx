@@ -6,7 +6,7 @@ import Filters from "../components/filters";
 export default function Home({ channels }) {
   return (
     <div className="container-fluid">
-      <div className="row flex-nowrap">
+      <div className={`row flex-nowrap ${styles.nowrap}`}>
         <div className="mx-auto col-3 p-4 bg-dark d-none d-lg-block bg-dark">
           <Filters />
         </div>
@@ -23,11 +23,12 @@ export default function Home({ channels }) {
                 <div>
                   {channel.videos.map((video, i) => (
                     <div>
+                      {/* TODO - use HandPicked value in data to show first 6 */}
                       {video.ProcessedText !== null && video.ProcessedText !== "" && i === 0 && k <= 6 && (
                         <div className="mb-1">
                           <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
                           <p className={styles.p}>
-                            <AutoLink text={video.ProcessedText} />{" "}
+                            <AutoLink key={i} text={video.ProcessedText} />{" "}
                           </p>
                         </div>
                       )}
