@@ -8,7 +8,7 @@ export default function Filters() {
   const search = searchParams.get("category");
   return (
     <div className="bg-dark font-styles d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-      <div className="px-0">
+      <div className="col-12">
         <div className="row ">
           <div className="col-12 min-vw-50">
             <div className="input-group bg-white">
