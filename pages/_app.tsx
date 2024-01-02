@@ -18,6 +18,4 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </Layout>
   );
-
-  //return <Component {...pageProps} />;
 }
