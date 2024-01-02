@@ -2,8 +2,15 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
 import Filters from "../components/filters";
-
+import { FilterService } from "../components/filterService";
 export default function Home({ channels }) {
+  const subscription = FilterService.getMessage().subscribe((message) => {
+    if (message) {
+      debugger;
+      getServerSideProps();
+    }
+  });
+
   return (
     <div className="container-fluid">
       <div className={`row flex-nowrap ${styles.nowrap}`}>

@@ -7,18 +7,20 @@ import Filters from "../components/filters";
 export default function Filtered({ channels }) {
   const searchParams = useSearchParams();
 
-  const search = searchParams.get("category");
+  const category = searchParams.get("category");
+  const filter = searchParams.get("filter");
+
   let filterTypeTitle = "";
 
-  switch (search) {
+  switch (category) {
     case "jewelry":
-      filterTypeTitle = "Jewelry & Accessory";
+      filterTypeTitle = "Jewelry & Accessory Creators";
       break;
     case "kitchen":
-      filterTypeTitle = "Kitchen & Dining";
+      filterTypeTitle = "Kitchen & Dining Creators";
       break;
     default:
-      filterTypeTitle = search.charAt(0).toUpperCase() + search.slice(1);
+      filterTypeTitle = filter?.charAt(0).toUpperCase() + filter?.slice(1);
   }
   return (
     <div className="container-fluid">
@@ -30,7 +32,7 @@ export default function Filtered({ channels }) {
           <div className="col col-lg-9">
             <div className="card mb-3 bg-light">
               <div className="card-body text-center align-items-center justify-content-center">
-                <h3>{`${filterTypeTitle} Creators`}</h3>
+                <h3>{`${filterTypeTitle}`}</h3>
               </div>
             </div>
             <h3>Latest Discounts</h3>
