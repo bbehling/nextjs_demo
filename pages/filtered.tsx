@@ -3,8 +3,9 @@ import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
 import { useSearchParams } from "next/navigation";
 import Filters from "../components/filters";
+import { connect } from "http2";
 
-export default function Filtered({ channels }) {
+export default function Filtered({ channels, videos }) {
   const searchParams = useSearchParams();
 
   const category = searchParams.get("category");
@@ -12,15 +13,19 @@ export default function Filtered({ channels }) {
 
   let filterTypeTitle = "";
 
-  switch (category) {
-    case "jewelry":
-      filterTypeTitle = "Jewelry & Accessory Creators";
-      break;
-    case "kitchen":
-      filterTypeTitle = "Kitchen & Dining Creators";
-      break;
-    default:
-      filterTypeTitle = filter?.charAt(0).toUpperCase() + filter?.slice(1);
+  if (filter) {
+    filterTypeTitle = filter;
+  } else {
+    switch (category) {
+      case "jewelry":
+        filterTypeTitle = "Jewelry & Accessory Creators";
+        break;
+      case "kitchen":
+        filterTypeTitle = "Kitchen & Dining Creators";
+        break;
+      default:
+        filterTypeTitle = category?.charAt(0).toUpperCase() + category?.slice(1);
+    }
   }
   return (
     <div className="container-fluid">
@@ -37,20 +42,14 @@ export default function Filtered({ channels }) {
             </div>
             <h3>Latest Discounts</h3>
             <div>
-              {channels.map((channel) => (
+              {videos.map((video, i) => (
                 <div>
-                  {channel.videos.map((video, i) => (
-                    <div>
-                      {video.DescriptionRaw.length > 0 && (
-                        <div className="mb-1">
-                          <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
-                          <p className={styles.p}>
-                            <AutoLink text={video.ProcessedText} />{" "}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                  <div className="mb-1">
+                    <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                    <p className={styles.p}>
+                      <AutoLink text={video.ProcessedText} />{" "}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -60,18 +59,35 @@ export default function Filtered({ channels }) {
     </div>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
+    const regex = new RegExp(".*" + context.query?.filter + ".*");
 
-    const channels = await db.collection("channels").find({}).toArray();
+    let channels = [];
+    let videos = [];
+
+    if (context.query?.filter) {
+      //Mongo cannot return only the video element matching the filter, so filter on server
+      channels = await db.collection("channels").find({ "videos.DescriptionRaw": regex }).toArray();
+
+      channels.forEach((doc) => {
+        doc.videos.filter((video) => {
+          if (regex.test(video.DescriptionRaw)) {
+            videos.push(video);
+          }
+        });
+      });
+    } else if (context.query?.category) {
+      channels = await db.collection("channels").find({}).toArray();
+    }
 
     // if dev, always regenerate pages.
     // if production, regenerate page only once every 20 hours.
     if (process.env.NODE_ENV === "development") {
       return {
-        props: { channels: JSON.parse(JSON.stringify(channels)) },
+        props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
     } else {
       return {
