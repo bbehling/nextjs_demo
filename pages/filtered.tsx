@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Filters from "../components/filters";
 import { connect } from "http2";
 
-export default function Filtered({ channels, videos }) {
+export default function Filtered({ videos }) {
   const searchParams = useSearchParams();
 
   const category = searchParams.get("category");
@@ -63,14 +63,14 @@ export async function getServerSideProps(context) {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
-    //const regex = new RegExp(".*" + context.query?.filter + ".*");
+    const regex = new RegExp(".*" + context.query?.filter + ".*");
 
     let channels = [];
     let videos = [];
 
     if (context.query?.filter) {
       //Mongo cannot return only the video element matching the filter, so filter on server
-      /* channels = await db.collection("channels").find({ "videos.DescriptionRaw": regex }).toArray();
+      channels = await db.collection("channels").find({ "videos.DescriptionRaw": regex }).toArray();
 
       channels.forEach((doc) => {
         doc.videos.filter((video) => {
@@ -78,7 +78,7 @@ export async function getServerSideProps(context) {
             videos.push(video);
           }
         });
-      }); */
+      });
     } else if (context.query?.category) {
       channels = await db.collection("channels").find({}).toArray();
     }
@@ -91,7 +91,7 @@ export async function getServerSideProps(context) {
       };
     } else {
       return {
-        props: { channels: JSON.parse(JSON.stringify(channels)), revalidate: 72000 },
+        props: { videos: JSON.parse(JSON.stringify(videos)), revalidate: 72000 },
       };
     }
   } catch (e) {
