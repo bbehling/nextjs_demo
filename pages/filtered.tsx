@@ -42,12 +42,12 @@ export default function Filtered({ channels, videos }) {
             </div>
             <h3>Latest Discounts</h3>
             <div>
-              {videos.map((video, i) => (
+              {videos?.map((video, i) => (
                 <div>
                   <div className="mb-1">
-                    <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                    <h4 className="card-title">{`Video: ${video?.VideoTitle}`}</h4>
                     <p className={styles.p}>
-                      <AutoLink text={video.ProcessedText} />{" "}
+                      <AutoLink text={video?.ProcessedText} />{" "}
                     </p>
                   </div>
                 </div>
@@ -63,14 +63,14 @@ export async function getServerSideProps(context) {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
-    const regex = new RegExp(".*" + context.query?.filter + ".*");
+    //const regex = new RegExp(".*" + context.query?.filter + ".*");
 
     let channels = [];
     let videos = [];
 
     if (context.query?.filter) {
       //Mongo cannot return only the video element matching the filter, so filter on server
-      channels = await db.collection("channels").find({ "videos.DescriptionRaw": regex }).toArray();
+      /* channels = await db.collection("channels").find({ "videos.DescriptionRaw": regex }).toArray();
 
       channels.forEach((doc) => {
         doc.videos.filter((video) => {
@@ -78,7 +78,7 @@ export async function getServerSideProps(context) {
             videos.push(video);
           }
         });
-      });
+      }); */
     } else if (context.query?.category) {
       channels = await db.collection("channels").find({}).toArray();
     }
