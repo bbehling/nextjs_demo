@@ -18,6 +18,9 @@ jobs:
   variables:
   - group: Azure-Static-Web-Apps-nice-sand-00b6d6e10-variable-group
   steps:
+    env:
+    NEXT_PUBLIC_VARIABLE: "value1"
+    NEXT_PUBLIC_ANOTHER_VARIABLE: "value2"
   - checkout: self
     submodules: true
   - task: AzureStaticWebApp@0
