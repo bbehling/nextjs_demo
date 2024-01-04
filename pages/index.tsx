@@ -2,7 +2,7 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
 import Filters from "../components/filters";
-export default function Home({ channels }) {
+export default function Home({ videos }) {
   return (
     <div className="container-fluid">
       <div className={`row flex-nowrap ${styles.nowrap}`}>
@@ -18,21 +18,17 @@ export default function Home({ channels }) {
             </div>
             <h3>Latest Discounts</h3>
             <div>
-              {channels.map((channel, k) => (
+              {videos.map((video, i) => (
                 <div>
-                  {channel.videos.map((video, i) => (
-                    <div>
-                      {/* TODO - use HandPicked value in data to show first 6 */}
-                      {video.ProcessedText !== null && video.ProcessedText !== "" && i === 0 && k <= 6 && (
-                        <div className="mb-1">
-                          <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
-                          <p className={styles.p}>
-                            <AutoLink key={i} text={video.ProcessedText} />{" "}
-                          </p>
-                        </div>
-                      )}
+                  {/* TODO - use HandPicked value in data to show first 6 */}
+                  {video.ProcessedText !== null && (
+                    <div className="mb-1">
+                      <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                      <p className={styles.p}>
+                        <AutoLink key={i} text={video.ProcessedText} />{" "}
+                      </p>
                     </div>
-                  ))}
+                  )}
                 </div>
               ))}
             </div>
@@ -49,15 +45,24 @@ export async function getServerSideProps() {
 
     const channels = await db.collection("channels").find().toArray();
 
+    let videos = [];
+
+    channels.forEach((doc) => {
+      doc.videos.forEach((video) => {
+        if (videos.length < 6 && video.CategorizedEntities.length > 0) {
+          videos.push(video);
+        }
+      });
+    });
     // if dev, always regenerate pages.
     // if production, regenerate page only once every 20 hours.
     if (process.env.NODE_ENV === "development") {
       return {
-        props: { channels: JSON.parse(JSON.stringify(channels)) },
+        props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
     } else {
       return {
-        props: { channels: JSON.parse(JSON.stringify(channels)), revalidate: 72000 },
+        props: { videos: JSON.parse(JSON.stringify(videos)), revalidate: 72000 },
       };
     }
   } catch (e) {

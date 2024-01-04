@@ -4,7 +4,7 @@ export default function AutoLink({ text }) {
 
   return (
     <>
-      {text.split(delimiter).map((word) => {
+      {text?.split(delimiter).map((word) => {
         const match = word.match(delimiter);
         if (match) {
           const url = match[0];

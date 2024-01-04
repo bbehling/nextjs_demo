@@ -44,12 +44,14 @@ export default function Filtered({ videos }) {
             <div>
               {videos?.map((video, i) => (
                 <div>
-                  <div className="mb-1">
-                    <h4 className="card-title">{`Video: ${video?.VideoTitle}`}</h4>
-                    <p className={styles.p}>
-                      <AutoLink text={video?.ProcessedText} />{" "}
-                    </p>
-                  </div>
+                  {video?.ProcessedText !== null && video?.ProcessedText != "" && (
+                    <div className="mb-1">
+                      <h4 className="card-title">{`Video: ${video?.VideoTitle}`}</h4>
+                      <p className={styles.p}>
+                        <AutoLink text={video?.ProcessedText} />{" "}
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -80,7 +82,17 @@ export async function getServerSideProps(context) {
         });
       });
     } else if (context.query?.category) {
-      channels = await db.collection("channels").find({}).toArray();
+      // return all videos for all channels matching the category
+      channels = await db
+        .collection("channels")
+        .find({ category: { $eq: context.query?.category } })
+        .toArray();
+
+      channels.forEach((doc) => {
+        doc.videos.forEach((video) => {
+          videos.push(video);
+        });
+      });
     }
 
     // if dev, always regenerate pages.

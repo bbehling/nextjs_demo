@@ -52,52 +52,69 @@ export default function Filters() {
         <ul className="nav nav-pills nav-pills flex-column mb-auto ms-2 me-2" id="menu">
           <li className="nav-item"></li>
           <li className="nav-item">
-            <a href="/filtered?category=political" className={search == "political" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Political</span>
-            </a>
-          </li>
-          <li>
-            <a href="/filtered?category=business" className={search == "business" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Business</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="/filtered?category=electronics"
-              className={search == "electronics" ? "nav-link active" : "nav-link"}
-            >
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Electronics</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="/filtered?category=apparel" className={search == "apparel" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Apparel</span>
-            </a>
-          </li>
-          <li>
-            <a href="/filtered?category=gaming" className={search == "gaming" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Gaming & Entertainment</span>
-            </a>
-          </li>
-          <li>
-            <a href="/filtered?category=health" className={search == "health" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Health & Wellness</span>
-            </a>
-          </li>
-          <li>
             <a href="/filtered?category=comedy" className={search == "comedy" ? "nav-link active" : "nav-link"}>
               <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Comedy</span>
             </a>
           </li>
           <li>
-            <a href="/filtered?category=jewelry" className={search == "jewelry" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Jewelry & Accessories</span>
+            <a href="/filtered?category=sports" className={search == "sports" ? "nav-link active" : "nav-link"}>
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Sports</span>
             </a>
           </li>
           <li>
-            <a href="/filtered?category=kitchen" className={search == "kitchen" ? "nav-link active" : "nav-link"}>
-              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Kitchen & Dining</span>
+            <a href="/filtered?category=food" className={search == "food" ? "nav-link active" : "nav-link"}>
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Food</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/filtered?category=educational"
+              className={search == "educational" ? "nav-link active" : "nav-link"}
+            >
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Educational</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/filtered?category=businessFinancial"
+              className={search == "businessFinancial" ? "nav-link active" : "nav-link"}
+            >
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Business & Financial</span>
+            </a>
+          </li>
+          <li>
+            <a href="/filtered?category=artsCrafts" className={search == "artsCrafts" ? "nav-link active" : "nav-link"}>
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Arts & Crafts</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/filtered?category=campingOutdoors"
+              className={search == "campingOutdoors" ? "nav-link active" : "nav-link"}
+            >
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Camping & Outdoors</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/filtered?category=fitnessHealth"
+              className={search == "fitnessHealth" ? "nav-link active" : "nav-link"}
+            >
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Fitness & Health</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/filtered?category=independentNews"
+              className={search == "independentNews" ? "nav-link active" : "nav-link"}
+            >
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>Independent News</span>
+            </a>
+          </li>
+          <li>
+            <a href="/filtered?category=diy" className={search == "diy" ? "nav-link active" : "nav-link"}>
+              <span className={`ms-1 d-sm-inline ${styles.fontColor}`}>DIY</span>
             </a>
           </li>
         </ul>
