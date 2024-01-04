@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Layout from "../components/layout";
+import Script from "next/script";
 config.autoAddCss = false;
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -14,8 +15,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout>
+    <>
+      <Script
+        id="Adsense-id"
+        async
+        strategy="beforeInteractive"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5962139115772386"
+      />
       <Component {...pageProps} />
-    </Layout>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }

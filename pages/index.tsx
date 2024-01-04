@@ -2,6 +2,7 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
 import Filters from "../components/filters";
+
 export default function Home({ videos }) {
   return (
     <div className="container-fluid">
