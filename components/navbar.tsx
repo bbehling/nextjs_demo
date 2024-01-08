@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light p-4 sticky-top">
       <div className="container-fluid">
-        <a className="navbar-brand col-2" href="#">
+        <a className="navbar-brand col-2" href="/">
           Creator Discounts
         </a>
         <button

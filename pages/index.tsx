@@ -50,7 +50,7 @@ export async function getServerSideProps() {
 
     channels.forEach((doc) => {
       doc.videos.forEach((video) => {
-        if (videos.length < 6 && video.CategorizedEntities.length > 0) {
+        if (videos.length < 6 && video.CategorizedEntities.length > 0 && video.ProcessedText != "") {
           videos.push(video);
         }
       });
