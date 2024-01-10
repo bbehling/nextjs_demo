@@ -14,7 +14,7 @@ jobs:
   displayName: Build and Deploy Job
   condition: or(eq(variables['Build.Reason'], 'Manual'),or(eq(variables['Build.Reason'], 'PullRequest'),eq(variables['Build.Reason'], 'IndividualCI')))
   pool:
-    vmImage: ubuntu-latest
+    name: default
   variables:
   - group: Azure-Static-Web-Apps-lively-sky-0f5ea0610-variable-group
   steps:
