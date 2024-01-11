@@ -20,6 +20,7 @@ export default function AutoLink({ text }) {
             </a>
           );
         }
+        word = word.replace("://", "");
         return word;
       })}
     </>
