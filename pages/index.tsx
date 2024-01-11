@@ -24,9 +24,11 @@ export default function Home({ videos }) {
                   {/* TODO - use HandPicked value in data to show first 6 */}
                   {video.ProcessedText !== null && (
                     <div className="mb-1">
-                      <h4 className="card-title">{`Video: ${video.VideoTitle}`}</h4>
+                      <h4 className="card-title">
+                        Video: <a href={video.videoUrl} target="_blank">{`${video.VideoTitle}`}</a>
+                      </h4>
                       <p className={styles.p}>
-                        <AutoLink key={i} text={video.ProcessedText} />{" "}
+                        <AutoLink key={i} text={video.ProcessedText} />
                       </p>
                     </div>
                   )}
