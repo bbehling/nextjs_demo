@@ -8,9 +8,15 @@ export default function AutoLink({ text }) {
         const match = word.match(delimiter);
         if (match) {
           const url = match[0];
+
+          // remove protocol for display txt
+          let urlDisplay = url.replace("https://", "");
+          urlDisplay = urlDisplay.replace("http://", "");
+
+          console.log(urlDisplay);
           return (
             <a href={url.startsWith("http") ? url : `http://${url}`} target="_blank">
-              {url}
+              {urlDisplay}
             </a>
           );
         }
