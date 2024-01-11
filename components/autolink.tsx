@@ -13,7 +13,6 @@ export default function AutoLink({ text }) {
           let urlDisplay = url.replace("https://", "");
           urlDisplay = urlDisplay.replace("http://", "");
 
-          console.log(urlDisplay);
           return (
             <a href={url.startsWith("http") ? url : `http://${url}`} target="_blank">
               {urlDisplay}
