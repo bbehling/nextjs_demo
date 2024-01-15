@@ -2,6 +2,7 @@ import clientPromise from "../lib/mongodb";
 import styles from "./channels.module.css";
 import AutoLink from "../components/autolink";
 import Filters from "../components/filters";
+//import { getStaticProps } from "next/dist/build/templates/pages";
 
 export default function Home({ videos }) {
   return (
@@ -41,7 +42,8 @@ export default function Home({ videos }) {
     </div>
   );
 }
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
   try {
     const client = await clientPromise;
     const db = client.db("creator-discounts");
@@ -72,3 +74,34 @@ export async function getServerSideProps() {
     console.error(e);
   }
 }
+/* export async function getServerSideProps() {
+  try {
+    const client = await clientPromise;
+    const db = client.db("creator-discounts");
+
+    const channels = await db.collection("channels").find().toArray();
+
+    let videos = [];
+
+    channels.forEach((doc) => {
+      doc.videos.forEach((video) => {
+        if (videos.length < 6 && video.CategorizedEntities.length > 0 && video.ProcessedText != "") {
+          videos.push(video);
+        }
+      });
+    });
+    // if dev, always regenerate pages.
+    // if production, regenerate page only once every 20 hours.
+    if (process.env.NODE_ENV === "development") {
+      return {
+        props: { videos: JSON.parse(JSON.stringify(videos)) },
+      };
+    } else {
+      return {
+        props: { videos: JSON.parse(JSON.stringify(videos)), revalidate: 72000 },
+      };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+} */

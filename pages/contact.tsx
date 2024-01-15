@@ -27,7 +27,7 @@ export default function Contact() {
                   target="_blank"
                 >
                   <FontAwesomeIcon className={styles.iconStyle} icon={faEnvelope} size="2xl" />
-                  <h3 className={`py-2 ${styles.text}`}> emailaddress@gmail.com</h3>
+                  <h3 className={`py-2 ${styles.text}`}> creatordiscount@gmail.com</h3>
                 </a>
               </div>
             </div>
