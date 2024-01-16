@@ -64,7 +64,9 @@ export default function Filtered({ videos }) {
                 <div>
                   {video?.ProcessedText !== null && video?.ProcessedText != "" && (
                     <div className="mb-1">
-                      <h4 className="card-title">{`Video: ${video?.VideoTitle}`}</h4>
+                      <h4 className="card-title">
+                        Video: <a href={video.videoUrl} target="_blank">{`${video.VideoTitle}`}</a>
+                      </h4>
                       <p className={styles.p}>
                         <AutoLink text={video?.ProcessedText} />{" "}
                       </p>
