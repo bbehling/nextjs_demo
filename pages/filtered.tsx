@@ -18,7 +18,7 @@ export default function Filtered({ videos }) {
   } else {
     switch (category) {
       case "diy":
-        filterTypeTitle = "diy";
+        filterTypeTitle = "DIY";
         break;
       case "independentNews":
         filterTypeTitle = "Independent News";
