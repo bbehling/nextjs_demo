@@ -99,12 +99,14 @@ export async function getServerSideProps(context) {
     // if dev, always regenerate pages.
     // if production, regenerate page only once every 20 hours.
     if (process.env.NODE_ENV === "development") {
+      context.res.setHeader("Cache-Control", "max-age=72000");
+      context.res.setHeader("Cache-Control", "must-revalidate");
       return {
         props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
     } else {
-      context.res.setHeader("Cache-Control", "max-age=72000", "must-revalidate");
-      //context.res.setHeader("Cache-Control", "public, s-maxage=72000", "must-revalidate");
+      context.res.setHeader("Cache-Control", "max-age=72000");
+      context.res.setHeader("Cache-Control", "must-revalidate");
       return {
         props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
