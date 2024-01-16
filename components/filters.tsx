@@ -48,7 +48,7 @@ export default function Filters() {
             </div>
           </div>
         </div>
-        <h5 className={`px-3 mt-5 mb-3 ${styles.fontColor}`}>Sorted by Category</h5>
+        <h5 className={`px-3 mt-5 mb-3 ${styles.fontColor}`}>Videos Sorted by Category</h5>
         <ul className="nav nav-pills nav-pills flex-column mb-auto ms-2 me-2" id="menu">
           <li className="nav-item"></li>
           <li className="nav-item">
