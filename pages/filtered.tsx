@@ -17,6 +17,24 @@ export default function Filtered({ videos }) {
     filterTypeTitle = filter;
   } else {
     switch (category) {
+      case "diy":
+        filterTypeTitle = "diy";
+        break;
+      case "independentNews":
+        filterTypeTitle = "Independent News";
+        break;
+      case "fitnessHealth":
+        filterTypeTitle = "Fitness & Health";
+        break;
+      case "campingOutdoors":
+        filterTypeTitle = "Camping & Outdoors";
+        break;
+      case "businessFinancial":
+        filterTypeTitle = "Business & Financial";
+        break;
+      case "artsCrafts":
+        filterTypeTitle = "Arts & Crafts";
+        break;
       case "jewelry":
         filterTypeTitle = "Jewelry & Accessory Creators";
         break;
