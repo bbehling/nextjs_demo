@@ -103,8 +103,8 @@ export async function getServerSideProps(context) {
         props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
     } else {
-      //context.res.setHeader("Cache-Control", "max-age=72000", "must-revalidate");
-      context.res.setHeader("Cache-Control", "public, s-maxage=72000", "must-revalidate");
+      context.res.setHeader("Cache-Control", "max-age=72000", "must-revalidate");
+      //context.res.setHeader("Cache-Control", "public, s-maxage=72000", "must-revalidate");
       return {
         props: { videos: JSON.parse(JSON.stringify(videos)) },
       };
