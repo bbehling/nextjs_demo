@@ -39,16 +39,6 @@ export default function Navbar() {
                 Home
               </a>
             </li>
-            <li className="nav-item">
-              <a className={pathname == "/about" ? "nav-link active" : "nav-link"} href="/about">
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className={pathname == "/contact" ? "nav-link active" : "nav-link"} href="/contact">
-                Contact Us
-              </a>
-            </li>
           </ul>
         </div>
       </div>
