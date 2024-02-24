@@ -1,4 +1,4 @@
-## Example Next.js app using MongoDB hosted on Azure Static Web App Service
+## Example Next.js app using MongoDB hosted on Azure Static Web App Service, with Bootstrap, Google Ads and Google Analytics
 
 ## In order to run, you will need a MongoDB matching the name with a collection found in this repo.
 
