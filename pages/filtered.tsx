@@ -85,7 +85,7 @@ export default function Filtered({ videos }) {
 export async function getServerSideProps(context) {
   try {
     const client = await clientPromise;
-    const db = client.db("creator-discounts");
+    const db = client.db("mydb");
     const regex = new RegExp(".*" + context.query?.filter + ".*");
 
     let channels = [];

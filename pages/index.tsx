@@ -46,7 +46,7 @@ export default function Home({ videos }) {
 export async function getStaticProps() {
   try {
     const client = await clientPromise;
-    const db = client.db("creator-discounts");
+    const db = client.db("mydb");
 
     const channels = await db.collection("channels").find().toArray();
 
