@@ -1,4 +1,6 @@
-## Example app using MongoDB
+## Example Next.js app using MongoDB hosted on Azure Static Web App Service
+
+## In order to run, you will need a MongoDB matching the name with a collection found in this repo.
 
 [MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
 
